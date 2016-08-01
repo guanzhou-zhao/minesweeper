@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
+function Cell(row, col, isMine, hidden) {
+  this.row = row;
+  this.col = col;
+  this.isMine = isMine;
+  this.hidden = hidden;
+}
+
 // Define your `board` object here!
-// var board = 
+var board = {
+  cells: [new Cell(0, 0, false, true), new Cell(0, 1, false, true), new Cell(0, 2, false, true), new Cell(1, 0, false, true), new Cell(1, 1, false, true), new Cell(1, 2, true, true), new Cell(2, 0, true, true), new Cell(2, 1, true, true), new Cell(2, 2, true, true)]
+}
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -21,12 +30,11 @@ function checkForWin () {
 
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
-// cells yourself! Just use `lib.getSurroundingCells`: 
+// cells yourself! Just use `lib.getSurroundingCells`:
 //
 //   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
 //
-// It will return cell objects in an array. You should loop through 
+// It will return cell objects in an array. You should loop through
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
 }
-
