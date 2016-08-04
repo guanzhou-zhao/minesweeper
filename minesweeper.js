@@ -17,11 +17,23 @@ var board = {
 }
 
 function startGame () {
+  setupBoard(boardLength, boardWidth, mineAmount);
+
+  document.getElementById('reset').addEventListener('click', startGame);
+  document.addEventListener("click", checkForWin);
+  document.addEventListener("contextmenu", checkForWin);
+  // Don't remove this function call: it makes the game work!
+  lib.initBoard()
+}
+
+// Generate Board
+function setupBoard(boardLength, boardWidth, mineAmount) {
   // The Amount of mines added to board
   var mineAdded = 0
   // The percentage of mines of cells
   var mineRate = mineAmount / (boardLength * boardWidth);
-
+  // Init board
+  board.cells = [];
   // Add cells to board
   for (var i = 0; i < boardLength; i++) {
     for (var j = 0; j < boardWidth; j++) {
@@ -46,13 +58,10 @@ function startGame () {
     }
   }
 
+  //Set surroundingMines property to Cell
   for (let cell of board.cells) {
     cell.surroundingMines = countSurroundingMines(cell);
   }
-  document.addEventListener("click", checkForWin);
-  document.addEventListener("contextmenu", checkForWin);
-  // Don't remove this function call: it makes the game work!
-  lib.initBoard()
 }
 
 // Define this function to look for a win condition:
