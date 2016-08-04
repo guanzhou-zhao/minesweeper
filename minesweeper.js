@@ -11,7 +11,7 @@ function Cell(row, col, isMine, hidden) {
 
 var boardLength = 3;
 var boardWidth = 3;
-var mineAmount = 4;
+var mineAmount = 2;
 var board = {
   cells: []
 }
@@ -83,6 +83,8 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
     lib.displayMessage('You win!')
+  // Play win audio
+  document.getElementById("audio_win").play()
 }
 
 // Define this function to count the number of mines around the cell
