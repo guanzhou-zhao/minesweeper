@@ -8,11 +8,44 @@ function Cell(row, col, isMine, hidden) {
 }
 
 // Define your `board` object here!
+
+var boardLength = 3;
+var boardWidth = 3;
+var mineAmount = 4;
 var board = {
-  cells: [new Cell(0, 0, false, true), new Cell(0, 1, false, true), new Cell(0, 2, false, true), new Cell(1, 0, false, true), new Cell(1, 1, false, true), new Cell(1, 2, true, true), new Cell(2, 0, true, true), new Cell(2, 1, true, true), new Cell(2, 2, true, true)]
+  cells: []
 }
 
 function startGame () {
+  // The Amount of mines added to board
+  var mineAdded = 0
+  // The percentage of mines of cells
+  var mineRate = mineAmount / (boardLength * boardWidth);
+
+  // Add cells to board
+  for (var i = 0; i < boardLength; i++) {
+    for (var j = 0; j < boardWidth; j++) {
+      if (mineAdded < mineAmount && Math.random() < mineRate) {
+        board.cells.push(new Cell(i, j, true, true));
+        mineAdded++;
+      } else {
+        board.cells.push(new Cell(i, j, false, true));
+      }
+    }
+  }
+  // If needed, add more mines
+  while (mineAdded < mineAmount) {
+    var filteredCells = board.cells.filter(function(cell) {
+      return !cell.isMine;
+    })
+    for (let cell of filteredCells) {
+      if (mineAdded < mineAmount && Math.random() > 1/2) {
+        cell.isMine = true;
+        mineAdded++;
+      }
+    }
+  }
+
   for (let cell of board.cells) {
     cell.surroundingMines = countSurroundingMines(cell);
   }
