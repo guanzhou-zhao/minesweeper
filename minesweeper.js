@@ -39,10 +39,9 @@ function startGame () {
 
   setupBoard(boardLength, boardWidth, mineAmount);
 
-  // Add event listeners
+  // Add event listener to reset button
   document.getElementById('reset').addEventListener('click', startGame);
-  document.addEventListener("click", checkForWin);
-  document.addEventListener("contextmenu", checkForWin);
+
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 
@@ -117,11 +116,11 @@ function checkForWin () {
   for (let cell of board.cells) {
     if (cell.isMine) {
       if (!cell.isMarked) {
-        return;
+        return false;
       }
     } else {
       if(cell.hidden) {
-        return;
+        return false;
       }
     }
   }
@@ -132,6 +131,9 @@ function checkForWin () {
     lib.displayMessage('You win!')
   // Play win audio
   document.getElementById("audio_win").play()
+
+  removeListeners()
+  return true;
 }
 
 // Define this function to count the number of mines around the cell
