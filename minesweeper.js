@@ -9,14 +9,19 @@ function Cell(row, col, isMine, hidden) {
 
 // Define your `board` object here!
 
-var boardLength = 3;
-var boardWidth = 3;
-var mineAmount = 2;
+var boardLength = 6;
+var boardWidth = 6;
+var mineAmount = 6;
+var startTime = null;
+var endTime = null;
 var board = {
   cells: []
 }
-
 function startGame () {
+  // Init time
+  startTime = null
+  endTime = null
+  document.getElementById("timeElasped").innerHTML = "0"
   setupBoard(boardLength, boardWidth, mineAmount);
 
   document.getElementById('reset').addEventListener('click', startGame);
@@ -24,6 +29,30 @@ function startGame () {
   document.addEventListener("contextmenu", checkForWin);
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
+
+  setMinesLeft()
+  setTimeElasped()
+}
+function setTimeElasped() {
+  setInterval(function() {
+    if (startTime) {
+      if (!endTime) {
+        document.getElementById("timeElasped").innerHTML = Math.round((new Date().getTime() - startTime) / 1000);
+      } else {
+        document.getElementById("timeElasped").inninnerHTML = Math.round((endTime - startTime) / 1000);
+      }
+    }
+  }, 1000)
+}
+
+// Set mines left element
+function setMinesLeft() {
+  var minesLeftElemt = document.getElementById("minesLeft")
+  var minesMarked = board.cells.filter(function(cell) {
+    return cell.isMarked
+  }).length
+  console.log(mineAmount - minesMarked)
+  minesLeftElemt.innerHTML = mineAmount - minesMarked
 }
 
 // Generate Board
@@ -80,6 +109,8 @@ function checkForWin () {
       }
     }
   }
+  // setEndTime
+  endTime = new Date().getTime()
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
     lib.displayMessage('You win!')

@@ -12,7 +12,14 @@
   <body>
     <div id="message"></div>
     <div class="board"></div>
-
+    <div id="" style="display:flex; flex-wrap:wrap;">
+      <div style="margin-right: 2em">
+        Mines left: <span id="minesLeft"></span>
+      </div>
+      <div>
+        Seconds elapsed: <span id="timeElasped">0</span>
+      </div>
+    </div>
     <input id="reset" class="button" value="reset" style="margin-top:20px;">
     <audio id="audio_bomb">
       <source src="./audio/time_bomb.mp3"></source>
