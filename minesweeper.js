@@ -131,7 +131,8 @@ function checkForWin () {
     lib.displayMessage('You win!')
   // Play win audio
   document.getElementById("audio_win").play()
-
+  // reveal all mines after win
+  revealMines()
   removeListeners()
   return true;
 }
