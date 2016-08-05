@@ -21,9 +21,25 @@ function startGame () {
   // Init time
   startTime = null
   endTime = null
+
+  // Set board dimension and mines Amount
+  var dimension = parseInt(document.forms[0].dimension.value);
+  var customMinesAmount = parseInt(document.forms[0].minesAmount.value)
+  boardLength = dimension
+  boardWidth = dimension
+  if (customMinesAmount > (dimension * dimension)) {
+    mineAmount = dimension*dimension
+    document.forms[0].minesAmount.value = dimension*dimension
+  } else {
+    mineAmount = customMinesAmount
+  }
+
+  // Set time elapsed element to 0
   document.getElementById("timeElasped").innerHTML = "0"
+
   setupBoard(boardLength, boardWidth, mineAmount);
 
+  // Add event listeners
   document.getElementById('reset').addEventListener('click', startGame);
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Minesweeper</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
@@ -8,34 +9,60 @@
     <script src="lib/tests.js"></script>
     <script src="lib/lib.js"></script>
     <script src="minesweeper.js"></script>
-  </head>
-  <body>
-    <div id="message"></div>
-    <div class="board"></div>
-    <div id="" style="display:flex; flex-wrap:wrap;">
-      <div style="margin-right: 2em">
-        Mines left: <span id="minesLeft"></span>
-      </div>
-      <div>
-        Seconds elapsed: <span id="timeElasped">0</span>
-      </div>
-    </div>
-    <input id="reset" class="button" value="reset" style="margin-top:20px;">
-    <audio id="audio_bomb">
-      <source src="./audio/time_bomb.mp3"></source>
-    </audio>
-    <audio id="audio_reveal">
-      <source src="./audio/computer_error.mp3"></source>
-    </audio>
-    <audio id="audio_mark">
-      <source src="./audio/click_on.mp3"></source>
-    </audio>
-    <audio id="audio_unmark">
-      <source src="./audio/click_off.mp3"></source>
-    </audio>
-    <audio id="audio_win">
-      <source src="./audio/win_music_box.mp3"></source>
-    </audio>
+</head>
 
-  </body>
+<body>
+    <div class="row">
+        <div class="two columns" style="padding-top:20%">
+            <form>
+                board dimension
+                <br> 3:
+                <input type="radio" name="dimension" value="3" >
+                <br> 4:
+                <input type="radio" name="dimension" value="4">
+                <br> 5:
+                <input type="radio" name="dimension" value="5">
+                <br> 6:
+                <input type="radio" name="dimension" value="6" checked>
+                <br> Mines Amount
+                <br>
+                <input type="number" name="minesAmount" min="1" max="35" step="1" value="6">
+                <br>
+
+                <input id="reset" class="button" value="reset" style="margin-top:1em; padding:0;">
+            </form>
+        </div>
+        <div class="eight columns">
+            <div id="message"></div>
+            <div class="board"></div>
+
+            <audio id="audio_bomb">
+                <source src="./audio/time_bomb.mp3"></source>
+            </audio>
+            <audio id="audio_reveal">
+                <source src="./audio/computer_error.mp3"></source>
+            </audio>
+            <audio id="audio_mark">
+                <source src="./audio/click_on.mp3"></source>
+            </audio>
+            <audio id="audio_unmark">
+                <source src="./audio/click_off.mp3"></source>
+            </audio>
+            <audio id="audio_win">
+                <source src="./audio/win_music_box.mp3"></source>
+            </audio>
+        </div>
+        <div class="two columns" style="padding-top: 20%;">
+            <div>
+                <div style="margin-bottom: 2em">
+                    Mines left: <span id="minesLeft"></span>
+                </div>
+                <div>
+                    Seconds elapsed: <span id="timeElasped">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
