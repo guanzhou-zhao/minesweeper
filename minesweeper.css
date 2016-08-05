@@ -61,3 +61,19 @@ div.hint {
 div.wrong, div.wrong:hover {
   background-color:red;
 }
+div.left, div.left:hover {
+  background-color: orange;
+}
+
+#minesLeft,
+#timeElasped {
+  padding-right: 0.3em;
+  border-style: inset;
+  background-color: #333333;
+  color: #25F125;
+  font-weight: bold;
+  width: 50%;
+  display: block;
+  text-align: right;
+  font-size: 1.5em;
+}
