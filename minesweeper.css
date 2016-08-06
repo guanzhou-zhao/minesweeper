@@ -21,7 +21,9 @@ body {
 
 .board div {
   color: green;
-  font-size: 2rem;
+  /* Make font strong */
+  font-size: 3rem;
+  font-weight: bolder;
   width: 70px;
   height: 70px;
   border: 3px #ccc dotted;
@@ -32,6 +34,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .board div:hover {
@@ -76,4 +79,16 @@ div.left, div.left:hover {
   display: block;
   text-align: right;
   font-size: 1.5em;
+}
+div.blue {
+  color: blue;
+}
+div.green {
+  color: green;
+}
+div.red {
+  color: red;
+}
+div.black {
+  color: black;
 }
