@@ -66,7 +66,6 @@ function setMinesLeft() {
   var minesMarked = board.cells.filter(function(cell) {
     return cell.isMarked
   }).length
-  console.log(mineAmount - minesMarked)
   minesLeftElemt.innerHTML = mineAmount - minesMarked
 }
 
