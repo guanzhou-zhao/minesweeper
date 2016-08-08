@@ -27,9 +27,13 @@ function startGame () {
   var customMinesAmount = parseInt(document.forms[0].minesAmount.value)
   boardLength = dimension
   boardWidth = dimension
-  if (customMinesAmount > (dimension * dimension)) {
-    mineAmount = dimension*dimension
-    document.forms[0].minesAmount.value = dimension*dimension
+  // 1 >= minesAmount < board.cells.length 
+  if (customMinesAmount >= (dimension * dimension)) {
+    mineAmount = dimension*dimension - 1
+    document.forms[0].minesAmount.value = dimension*dimension - 1
+  } else if (customMinesAmount < 1){
+    mineAmount = 1
+    document.forms[0].minesAmount.value = 1
   } else {
     mineAmount = customMinesAmount
   }
